@@ -93,9 +93,49 @@ Can be defined in 3 ways
 ```
 var sampleMap = map[string]int // using var
 sampleMap := map[string]int // shorthand notation
-sampleMap := make(map[string]int) // using make 
+sampleMap := make(map[string]int) // using make
+
+var sampleMap = map[string]int{
+	"one": 1,
+	"two": 2,
+	"three": 3, // Comma is necessary
+}
 ```
 
+Adding items 
+```
+sampleMap[key] = value
+```
+
+Get value from a curresponding key
+- By default if the key doesnot exists, we get zero value of the value type
+```
+val := sampleMap["one"]
+```
+
+Check if key exists in the map
+```
+value, ok := sampleMap[key]
+val, ok := sampleMap["one"] // 1, true
+
+_, ok := sampleMap[key]  // Just to check the existence of a key
+```
+
+Deleting a key from map
+```
+delete(sampleMap, "key");
+```
+
+Iterating over a map
+```
+for key, val := range sampleMap {
+   fmt.Println(key, val)
+}
+```
+
+Notes:
+- Maps are reference types. When you assign a map to a new variable, they both refer to the same underlying data structure. I.e changes done by one variable will be visible to the other.
+- It applies when we pass a ap to a function. I.e., Changes done to the map inside function is also visible to the caller.
 
 #### Reference
 1. https://medium.com/@victorsteven/understanding-data-structures-in-golang-f55205afdcaa
